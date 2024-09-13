@@ -4,6 +4,7 @@ import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 import ListGroup1 from "./components/ListGroup/ListGroup1";
 import Like from "./components/Like";
+import Drink from "./components/Drink";
 
 function App() {
   let items = ["India", "US", "UK", "Nepal", "Japan"];
@@ -19,6 +20,9 @@ function App() {
         Hello
       </Button>
       <Like />
+      <br />
+      <br />
+      <Drink />
       <ListGroup
         items={items}
         heading="Cities"
