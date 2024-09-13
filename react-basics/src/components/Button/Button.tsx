@@ -15,7 +15,7 @@ const Button = ({ children, onClick, color }: Props) => {
       className={[styles.bttn, styles["bttn-" + color]].join(" ")}
       onClick={onClick}
     >
-      children
+      {children}
     </button>
   );
 };

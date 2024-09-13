@@ -1,38 +1,37 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
+import NavBar from "./components/NavBar";
+import ShoppingCart from "./components/ShoppingCart";
 import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
-import ListGroup1 from "./components/ListGroup/ListGroup1";
-import Like from "./components/Like";
-import Drink from "./components/Drink";
+import Paragraph from "./components/Paragraph";
 
 function App() {
-  let items = ["India", "US", "UK", "Nepal", "Japan"];
-  const handleSelectItem = (item: string) => console.log(item);
+  const [cartItems, setCartItems] = useState(["Item 1", "Item 2"]);
+  const [display, setDisplay] = useState(false);
+  const [maxChar, setMaxChar] = useState(10);
+  const handleClear = () => {
+    setCartItems([]);
+  };
+  const handleClick = () => {
+    let count = cartItems.length + 1;
+    setCartItems([...cartItems, "Item " + count]);
+  };
 
-  const [alertVisible, setAlertVisible] = useState(false);
   return (
     <div>
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisible(false)}>ALERT</Alert>
-      )}
-      <Button color="primary" onClick={() => setAlertVisible(true)}>
-        Hello
+      <NavBar itemCount={cartItems.length} />
+      <br />
+      <ShoppingCart cartItems={cartItems} onClear={handleClear} />
+      <br />
+      <Button color="primary" onClick={handleClick}>
+        Click Me
       </Button>
-      <Like />
       <br />
-      <br />
-      <Drink />
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-      <ListGroup1
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
+      <Paragraph>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea mollitia
+        doloremque soluta cupiditate. Aliquid animi, reprehenderit iste veniam
+        beatae repellendus reiciendis ex sunt accusamus ducimus excepturi
+        accusantium dolorem! Iusto, in?
+      </Paragraph>
     </div>
   );
 }
