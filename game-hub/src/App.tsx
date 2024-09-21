@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
       }}
     >
       <GridItem area="nav" marginBottom={5} marginTop={2}>
-        <NavBar />
+        <NavBar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
@@ -54,6 +57,7 @@ function App() {
             sortOrder={gameQuery.sortOrder}
           />
         </HStack>
+
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
